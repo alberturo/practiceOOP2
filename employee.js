@@ -1,13 +1,27 @@
+// const Manager = require("./manager");
+
 class Employee {
-  constructor(_name, _salary, _title, _manager = null) {
-    this.name = _name;
-    this.salary = _salary;
-    this.title = _title;
-    this.manager = _manager;
+  constructor(name, salary, title, manager = null) {
+    this.name = name;
+    this.salary = salary;
+    this.title = title;
+    this.manager = manager;
+    if (manager) {
+      manager.addEmployee(this);
+    }
+  }
+  calculateBonus(multiplier) {
+    return this.salary * multiplier;
   }
 }
 
 // const leo = new Employee("Leonardo", 90000, "Ninja");
 // console.log(leo);
+
+// const raph = new Employee("Raphael", 90000, "Ninja");
+// const donny = new Employee("Donatello", 85000, "Grasshopper");
+
+// console.log(raph.calculateBonus(0.25)); // => 22500
+// console.log(donny.calculateBonus(0.15)); // => 12750
 
 module.exports = Employee;
